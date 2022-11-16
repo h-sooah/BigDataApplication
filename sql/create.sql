@@ -1,0 +1,101 @@
+CREATE TABLE MOVIE_DETAIL (
+movieId INT NOT NULL PRIMARY KEY,
+movieTitle TEXT,
+runningTime INT,
+genres TEXT,
+age TEXT,
+releasedDate TEXT,
+budget INT,
+revenue INT,
+posterPath TEXT,
+story MEDIUMBLOB
+);
+
+CREATE INDEX movie_idx ON MOVIE_DETAIL (movieTitle);
+
+CREATE TABLE USER (
+userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id TEXT,
+pw TEXT,
+userAge INT,
+userSex TEXT
+);
+
+CREATE TABLE REVIEW (
+reviewId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+watchDate TEXT,
+rate INT,
+content MEDIUMBLOB,
+isRewatched INT,
+userId INT,
+movieId INT,
+FOREIGN KEY (userId)
+	REFERENCES USER(userId),
+FOREIGN KEY (movieId)
+	REFERENCES MOVIE_DETAIL(movieId)
+);
+
+CREATE TABLE ISSUE (
+issueId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+issueContent TEXT
+);
+
+CREATE TABLE STUDIO (
+studioId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+studioName TEXT,
+sales INT
+);
+
+
+CREATE TABLE BOXOFFICE (
+boxOfficeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+movieId INT,
+FOREIGN KEY (movieId) REFERENCES MOVIE_DETAIL(movieId)
+);
+
+CREATE TABLE DIRECTOR (
+directorId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+directorName TEXT,
+directorSex TEXT,
+directorAge INT
+);
+
+CREATE TABLE ACTOR (
+actorId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+actorName TEXT,
+actorSex TEXT,
+actorAge INT,
+actorHeight INT,
+issueId INT NOT NULL,
+FOREIGN KEY (issueId) REFERENCES ISSUE(issueId)
+);
+
+CREATE TABLE MOVIE_ACTOR (
+movieId INT NOT NULL,
+actorId INT NOT NULL,
+PRIMARY KEY (movieId, actorId),
+FOREIGN KEY (movieId) 
+	REFERENCES MOVIE_DETAIL(movieId),
+FOREIGN KEY (actorId) 
+	REFERENCES ACTOR(actorId)
+);
+
+CREATE TABLE MOVIE_DIRECTOR (
+movieId INT NOT NULL,
+directorId INT NOT NULL,
+PRIMARY KEY (movieId, directorId),
+FOREIGN KEY (movieId) 
+	REFERENCES MOVIE_DETAIL(movieId),
+FOREIGN KEY (directorId) 
+	REFERENCES DIRECTOR(directorId)
+);
+
+CREATE TABLE MOVIE_STUDIO (
+movieId INT NOT NULL,
+studioId INT NOT NULL,
+PRIMARY KEY (movieId, studioId),
+FOREIGN KEY (movieId) 
+	REFERENCES MOVIE_DETAIL(movieId),
+FOREIGN KEY (studioId) 
+	REFERENCES STUDIO(studioId)
+);

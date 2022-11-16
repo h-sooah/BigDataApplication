@@ -1,0 +1,69 @@
+LOAD DATA INFILE '../../htdocs/team04/data/movieDetail.csv'
+INTO TABLE MOVIE_DETAIL
+FIELDS TERMINATED BY ';' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '../../htdocs/team04/data/user.csv'
+INTO TABLE USER
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '../../htdocs/team04/data/review.csv'
+INTO TABLE REVIEW
+FIELDS TERMINATED BY ';' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+INSERT INTO ISSUE (issueId, issueContent) VALUES (1, "논란 없음");
+INSERT INTO ISSUE (issueId, issueContent) VALUES (2, "음주운전");
+INSERT INTO ISSUE (issueId, issueContent) VALUES (3, "마약");
+INSERT INTO ISSUE (issueId, issueContent) VALUES (4, "성범죄");
+INSERT INTO ISSUE (issueId, issueContent) VALUES (5, "인성 논란");
+
+LOAD DATA INFILE '../../htdocs/team04/data/studio.csv'
+INTO TABLE STUDIO
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '../../htdocs/team04/data/boxoffice.csv'
+INTO TABLE BOXOFFICE
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '../../htdocs/team04/data/director.csv'
+INTO TABLE DIRECTOR
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA INFILE '../../htdocs/team04/data/actor.csv'
+INTO TABLE ACTOR
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA INFILE '../../htdocs/team04/data/movieNdirector.csv'
+INTO TABLE MOVIE_DIRECTOR
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA INFILE '../../htdocs/team04/data/movieNactor.csv'
+INTO TABLE MOVIE_ACTOR
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA INFILE '../../htdocs/team04/data/movieNstudio.csv'
+INTO TABLE MOVIE_STUDIO
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
