@@ -16,6 +16,12 @@ FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+LOAD DATA INFILE '../../htdocs/team04/data/comment.csv'
+INTO TABLE COMMENT
+FIELDS TERMINATED BY ';' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
 INSERT INTO ISSUE (issueId, issueContent) VALUES (1, "논란 없음");
 INSERT INTO ISSUE (issueId, issueContent) VALUES (2, "음주운전");
 INSERT INTO ISSUE (issueId, issueContent) VALUES (3, "마약");

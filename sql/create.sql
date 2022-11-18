@@ -1,3 +1,5 @@
+USE team04;
+
 CREATE TABLE MOVIE_DETAIL (
 movieId INT NOT NULL PRIMARY KEY,
 movieTitle TEXT,
@@ -23,12 +25,24 @@ userSex TEXT
 
 CREATE TABLE REVIEW (
 reviewId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-watchDate TEXT,
+watchDate DATE,
 rate INT,
 content MEDIUMBLOB,
 isRewatched INT,
 userId INT,
 movieId INT,
+FOREIGN KEY (userId)
+	REFERENCES USER(userId),
+FOREIGN KEY (movieId)
+	REFERENCES MOVIE_DETAIL(movieId)
+);
+
+CREATE TABLE COMMENT (
+commentId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+userId INT,
+movieId INT,
+writeDate DATE,
+content MEDIUMBLOB,
 FOREIGN KEY (userId)
 	REFERENCES USER(userId),
 FOREIGN KEY (movieId)
@@ -43,7 +57,7 @@ issueContent TEXT
 CREATE TABLE STUDIO (
 studioId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 studioName TEXT,
-sales INT
+sales BIGINT
 );
 
 
